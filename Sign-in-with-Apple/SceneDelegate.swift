@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,7 +19,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        let uid = UserDefaults.standard.string(forKey: "userIdentifier") ?? ""
+        
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        appleIDProvider.getCredentialState(forUserID: uid) { (credentialState, error) in
+            switch credentialState {
+            case .authorized:
+            break // The Apple ID credential is valid.
+            case .revoked, .notFound:
+                // The Apple ID credential is either revoked or was not found, so show the sign-in UI.
+                DispatchQueue.main.async {
+                    self.showLoginViewController()
+                }
+            case .transferred:
+                break
+            @unknown default:
+                break
+            }
+        }
+        
     }
+    
+    private func showLoginViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        loginViewController.modalPresentationStyle = .formSheet
+        loginViewController.isModalInPresentation = true
+        self.window?.rootViewController?.present(loginViewController, animated: true)
+    }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
