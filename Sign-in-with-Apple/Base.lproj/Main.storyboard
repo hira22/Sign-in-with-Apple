@@ -16,18 +16,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDT-TF-EIQ" customClass="SignInWithAppleIDButton" customModule="Sign_in_with_Apple" customModuleProvider="target">
-                                <rect key="frame" x="107" y="426.5" width="200" height="43"/>
+                                <rect key="frame" x="137" y="433" width="140" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uDT-TF-EIQ" secondAttribute="height" multiplier="14:3" id="Ptf-Ti-ijc"/>
-                                    <constraint firstAttribute="width" constant="200" id="fU7-Gw-RDx"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="type">
-                                        <integer key="value" value="0"/>
+                                        <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="style">
-                                        <integer key="value" value="3"/>
+                                        <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="6"/>

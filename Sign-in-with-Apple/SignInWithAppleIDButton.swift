@@ -15,13 +15,13 @@ class SignInWithAppleIDButton: UIButton {
     private var appleIDButton: ASAuthorizationAppleIDButton!
     
     @IBInspectable
-    var cornerRadius: CGFloat = 6.0
+    private var _cornerRadius: CGFloat = 6.0
     
     @IBInspectable
-    var type: Int = ASAuthorizationAppleIDButton.ButtonType.default.rawValue
+    private var type: Int = ASAuthorizationAppleIDButton.ButtonType.default.rawValue
     
     @IBInspectable
-    var style: Int = ASAuthorizationAppleIDButton.Style.black.rawValue
+    private var style: Int = ASAuthorizationAppleIDButton.Style.black.rawValue
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -31,7 +31,7 @@ class SignInWithAppleIDButton: UIButton {
         let type = ASAuthorizationAppleIDButton.ButtonType.init(rawValue: self.type) ?? .default
         let style = ASAuthorizationAppleIDButton.Style.init(rawValue: self.style) ?? .black
         self.appleIDButton = ASAuthorizationAppleIDButton(authorizationButtonType: type, authorizationButtonStyle: style)
-        self.appleIDButton.cornerRadius = cornerRadius
+        self.appleIDButton.cornerRadius = _cornerRadius
         
         self.addSubview(appleIDButton)
         
